@@ -28,6 +28,8 @@ var WikiConverter = (function () {
   function WikiConverter(wiki_path, options) {
     _classCallCheck(this, WikiConverter);
 
+    console.log(options);
+
     if (!wiki_path || fs.statSync(wiki_path).isDirectory() === false) {
       throw new TypeError('wiki_path is not a valid directory.');
     }

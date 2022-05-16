@@ -21,6 +21,7 @@ class WikiConverter {
    * @constructor
    */
   constructor(wiki_path, options) {
+    console.log(options);
 
     if (!wiki_path || fs.statSync(wiki_path).isDirectory() === false) {
       throw new TypeError('wiki_path is not a valid directory.')
