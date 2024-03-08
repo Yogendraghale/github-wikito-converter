@@ -1,143 +1,100 @@
-# Github Wikito Converter
+# 3DEnvBuilder README
 
-Github Wikito Converter allows you to generate HTML & PDF documentation from your Github wiki or any other markdown-based wiki. It is build on top of [Limedocs Wiki Converter](https://github.com/limedocs/limedocs-wiki-converter) and contains new features and bug fixes, check the [release notes](https://github.com/yakivmospan/github-wikito-converter/releases) to see them.
+## Overview
 
-Check out sample [HTML](https://github.com/yakivmospan/github-wikito-converter/blob/develop/sampels/okhttp.html) and [PDF](https://github.com/yakivmospan/github-wikito-converter/blob/develop/sampels/okhttp.pdf) files generated from [okhttp](https://github.com/square/okhttp/wiki) wiki.
+3DEnvBuilder is an innovative software project designed to transform 360-degree videos into immersive, editable 3D environments. By leveraging advanced AI algorithms, it allows users to navigate and interact with converted 3D spaces, offering the ability to customize these environments by adding or removing objects. This project aims to provide an intuitive and engaging platform suitable for various applications, including virtual reality experiences, educational tools, architectural visualization, and interactive media.
 
-# Prerequesites
+## Features
 
-- [Node.js](https://nodejs.org/) or [io.js](https://iojs.org/en/index.html)
-- [wkhtmltopdf](http://wkhtmltopdf.org/downloads.html) (only necessary for pdf output format)
+- **360-Degree Video to 3D Conversion**: Utilize AI to convert 360-degree video footage into dynamic 3D environments.
+- **Interactive 3D Navigation**: Explore the 3D spaces from multiple angles and perspectives for a comprehensive understanding of the environment.
+- **Object Manipulation**: Add, delete, and adjust objects within the 3D environment to customize the scene to your liking.
+- **Cross-Platform Compatibility**: Accessible through both web and desktop applications, ensuring a broad user reach.
+- **User-Friendly Interface**: Designed with simplicity in mind, making it accessible for users with varying levels of technical expertise.
 
-Note: The patched-QT version of `wkhtmltopdf` is required for pdf export. Without it, `gwtc` output can be found as an empty pdf file. See issue ([#39][i39]) for details.
+## Getting Started
 
-[i39]: https://github.com/yakivmospan/github-wikito-converter/issues/39
+### Prerequisites
 
-# Installation
+Ensure you have the following installed on your system:
+- Node.js (latest stable version)
+- A modern web browser (Chrome, Firefox, Safari, or Edge)
 
-## Public version
+### Installation
 
-```bash
-npm install -g github-wikito-converter
-```
+1. **Clone the Repository**
 
-## Local version
+   ```
+   git clone https://github.com/your-username/3DEnvBuilder.git
+   cd 3DEnvBuilder
+   ```
 
-Download `github-wikito-converter` sources, open `termial` at the root the folder, and run:
+2. **Install Dependencies**
 
-```bash
-npm run build-and-install-g
-```
+   For the web application:
+   ```
+   cd web
+   npm install
+   ```
 
-# Usage
+   For the desktop application:
+   ```
+   cd desktop
+   npm install
+   ```
 
-## Basic usage
+3. **Running the Application**
 
-```bash
-# Clone your github wiki for example
-git clone https://github.com/yakivmospan/github-wikito-converter.wiki.git
+   - To run the web application:
+     ```
+     cd web
+     npm start
+     ```
 
-# Convert your wiki
-gwtc ./github-wikito-converter.wiki
-```
+   - To run the desktop application:
+     ```
+     cd desktop
+     npm start
+     ```
 
-## Usage help
-```
-  Usage: gwtc [options] <wiki-dir>
+## Usage
 
-  Convert a wiki
+After starting the application, navigate to `localhost:3000` in your web browser for the web application or use the desktop application that should have opened automatically.
 
-  Options:
+1. **Import a 360-Degree Video**: Use the import feature to upload your 360-degree video file.
+2. **Conversion**: The software will automatically start converting the video into a 3D environment. This process might take a few minutes depending on the video's length and complexity.
+3. **Explore and Edit**: Once the conversion is complete, use the navigation tools to explore the 3D environment. Utilize the object manipulation features to customize the scene.
+4. **Save Your Work**: Don't forget to save your modified environment for future access or export it for use in other applications.
 
-    -h, --help                   output usage information
-    -V, --version                output the version number
-    -f, --format <format>        Format to convert to. Either html, pdf, or all [default: html]
-    -o, --output <output-dir>    Output dir [default: './']
-    -n, --file-name <file-name>  Output file name [default: documentation]
-    -t, --title <title>          Wiki title [default: Documentation]
-    -d, --disable-inline-assets  Disable inlining of images, css and js in html document
-    --logo-img <logo-file>       Logo image file
-    --footer <footer>            Wiki footer
-    --toc <toc-file>             Wiki TOC file
-    --toctitle <toc title>       Title of the toc [default: Table of contents] (default: "Table of contents")
-    --toc-level <level>          Table of contents deep level [default: 3]
-    --highlight-theme <theme>    Highlighter theme [default: github]
-    --css <css-file>             Additional CSS file
-    --pdf-page-count             Enable PDF page count
-    -v --verbose                 Verbose mode
-```
+## Contributing
 
+We welcome contributions from the community! Whether you're interested in fixing bugs, adding new features, or improving documentation, your help is greatly appreciated.
 
-# Formats
+1. **Fork the Repository**: Start by forking the project repository on GitHub.
+2. **Create a Feature Branch**: Create a new branch for your feature or bugfix.
+   ```
+   git checkout -b feature/your_feature_name
+   ```
+3. **Commit Your Changes**: Make your changes and commit them with a clear, descriptive message.
+   ```
+   git commit -m "Add a concise commit message describing the change"
+   ```
+4. **Push to the Branch**: Push your changes to your remote repository.
+   ```
+   git push origin feature/your_feature_name
+   ```
+5. **Open a Pull Request**: Go to the original project repository on GitHub and open a pull request with a clear title and description.
 
-## HTML
+Please ensure your code adheres to the project's coding standards and passes all tests.
 
-### Pages to be included in the documentation
+## Support
 
-By default, *Github Wikito Converter* will check for the following files to use as a table of contents (TOC):
+For support or further information, please open an issue in the GitHub repository or contact the project maintainers directly via email.
 
-- `_Toc.md`
-- `_Sidebar.md` (which is the default sidebar file on Github wikis)
+## License
 
-When finding a TOC, *gwtc* will only generate pages linked from this TOC. Supported link formats are:
+This project is licensed under the MIT License - see the LICENSE file for details.
 
-- Markdown links with local path `[Call Log](Call-Log)` / `[Log](Call-Log.md)` / `[Calls](/Call-Log.md)`;
-- Markdown links with remote (http/https) path `[Calls](https://github.com/yourrepo/someproject/wiki/Call-Log)`.
-  Only those links that are placed in TOC will be converted to local page ids;
-- Github wiki links `[[Call Log]]` / `[[Call-Log]]` / `[[Call Log|Call-Log]]` / `[[Log|Call Log]]`.
+---
 
-### Inlining
-
-By default, the HTML output format will generate a single-page HTML document of you wiki, with all assets inlined, such
-as images, css, and javascript. So all you need to transfer documentation (to a colleague for example) is to send him/her
-this unique file.
-
-You can disable this inlining feature by passing `--disable-inline-assets` (or `-d`) such as several files will be
-generated for each of images, css and javascript files.
-
-### Table of contents (TOC)
-
-The *TOC* is rendered using a fixed div in the HTML documentation. You can use `--toc-level` to prevent the *TOC* div
-to overlap the `body` element.
-
-## PDF
-
-### Rendering
-
-PDF rendering is done using `wkhtmltopdf` which should be available in your `PATH`.
-It simply renders (more or less) the HTML version of your doc in PDF.
-
-### Page breaking
-
-By default all TOC pages starts from a new page. Also with default `css` you will never see your code block or image
-broken in two pages. To add additional page breaking use `style="page-break-before: always !important;` with empty `div` element.
-
-Before :
-
-```md
-## Interceptors
-
-Interceptors are a powerful mechanism that can monitor, rewrite, and retry calls. Here's a simple interceptor that logs the outgoing request and the incoming response.
-
-![Interceptors Diagram](https://raw.githubusercontent.com/wiki/square/okhttp/interceptors@2x.png)
-```
-
-![](https://raw.githubusercontent.com/yakivmospan/github-wikito-converter/develop/assets/img/page-break-1.png)
-
-After :
-
-```md
-<div style="page-break-before: always !important;"/>
-## Interceptors
-
-Interceptors are a powerful mechanism that can monitor, rewrite, and retry calls. Here's a simple interceptor that logs the outgoing request and the incoming response.
-
-![Interceptors Diagram](https://raw.githubusercontent.com/wiki/square/okhttp/interceptors@2x.png)
-```
-
-![](https://raw.githubusercontent.com/yakivmospan/github-wikito-converter/develop/assets/img/page-break-2.png)
-
-# Code highlighting
-
-Code highlighting is rendered using highlight.js.
-You can customize the theme used by using the `--highlight-theme` option. By default, `github` theme is used.
+Thank you for considering contributing to 3DEnvBuilder. Together, we can build an engaging and versatile platform that pushes the boundaries of 360-degree video interaction and 3D environment manipulation.
